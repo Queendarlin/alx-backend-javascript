@@ -6,7 +6,7 @@ function queryAPI(endpoint) {
   }
 
   let count = weakMap.get(endpoint);
-  count++;
+  count += 1;
   weakMap.set(endpoint, count);
 
   if (count >= 5) {

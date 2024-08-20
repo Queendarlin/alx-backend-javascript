@@ -1,13 +1,18 @@
-// Display the initial message
-console.log('Welcome to Holberton School, what is your name?');
+const readline = require('readline');
 
-// Listen to the standard input (stdin) data event
-process.stdin.on('data', (data) => {
-  const name = data.toString().trim();
-  console.log(`Your name is: ${name}`);
+// Create an interface to read input from stdin
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
 });
 
-// Listen to the standard input (stdin) end event
-process.stdin.on('end', () => {
+// Display the welcome message
+rl.question('Welcome to Holberton School, what is your name?\n', (name) => {
+  console.log(`Your name is: ${name}`);
+  rl.close();
+});
+
+// Handle the close event
+rl.on('close', () => {
   console.log('This important software is now closing');
 });
